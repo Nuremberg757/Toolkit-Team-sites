@@ -77,14 +77,43 @@
         <div class="footer-bottom">&copy; 2026 Toolkit Team</div>
     </footer>
 
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <div class="uncanny-mountains"></div>
     <div class="mist-layer"></div>
     <div class="creepy-haze"></div>
 
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
     <script>
-        // Плавный переход между страницами
+        // Блокировка F12 и других клавиш разработчика
+        (function() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.keyCode === 73)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.keyCode === 74)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.keyCode === 85)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.keyCode === 67)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        })();
+
+        // Плавный переход
         (function() {
             const links = document.querySelectorAll('a');
             links.forEach(link => {
@@ -94,9 +123,7 @@
                         if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
                             e.preventDefault();
                             document.body.classList.add('fade-out');
-                            setTimeout(() => {
-                                window.location.href = href;
-                            }, 400);
+                            setTimeout(() => { window.location.href = href; }, 300);
                         }
                     });
                 }
@@ -106,17 +133,16 @@
         // Мобильное меню
         const toggleBtn = document.getElementById('mobile-menu-toggle');
         const mobileNav = document.getElementById('mobile-nav-links');
-        const overlayMenu = document.getElementById('mobileMenuOverlay');
-
-        if (toggleBtn && mobileNav && overlayMenu) {
+        const overlay = document.getElementById('mobileMenuOverlay');
+        if (toggleBtn && mobileNav && overlay) {
             const openMenu = () => {
                 mobileNav.classList.add('active');
-                overlayMenu.classList.add('active');
+                overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             };
             const closeMenu = () => {
                 mobileNav.classList.remove('active');
-                overlayMenu.classList.remove('active');
+                overlay.classList.remove('active');
                 document.body.style.overflow = '';
             };
             toggleBtn.addEventListener('click', (e) => {
@@ -124,7 +150,7 @@
                 if (mobileNav.classList.contains('active')) closeMenu();
                 else openMenu();
             });
-            overlayMenu.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
             mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && mobileNav.classList.contains('active')) closeMenu();
@@ -134,13 +160,8 @@
         // Тёмная тема
         const themeToggle = document.getElementById('theme-toggle');
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-theme');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            document.body.classList.remove('dark-theme');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
+        if (savedTheme === 'dark') { document.body.classList.add('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        else { document.body.classList.remove('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             const isDark = document.body.classList.contains('dark-theme');
