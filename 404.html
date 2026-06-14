@@ -28,8 +28,38 @@
     <div class="creepy-haze"></div>
 
     <script>
+        // Блокировка F12 и других клавиш разработчика
         (function() {
-            // Плавный переход для внутренних ссылок
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.keyCode === 73)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.keyCode === 74)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.keyCode === 85)) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.keyCode === 67)) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        })();
+
+        // Плавный переход
+        (function() {
             const links = document.querySelectorAll('a');
             links.forEach(link => {
                 if (link.hostname === window.location.hostname && !link.hasAttribute('target')) {
@@ -43,18 +73,19 @@
                     });
                 }
             });
-            // Тёмная тема
-            const themeToggle = document.getElementById('theme-toggle');
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') { document.body.classList.add('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
-            else { document.body.classList.remove('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-theme');
-                const isDark = document.body.classList.contains('dark-theme');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            });
         })();
+
+        // Тёмная тема
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') { document.body.classList.add('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        else { document.body.classList.remove('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
     </script>
 </body>
 </html>
