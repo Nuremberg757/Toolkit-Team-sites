@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Toolkit Team | OSINT инструменты</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Toolkit Team</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Главная</a>
+                <a href="about.html">О нас</a>
+                <a href="contacts.html">Контакты</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="https://t.me/osint_toolkit" target="_blank" class="nav-icon" title="Telegram канал"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.rustore.ru/catalog/app/com.toolkitteam.osinttoolkit" target="_blank" class="nav-icon" title="Скачать в RuStore"><i class="fab fa-android"></i></a>
+                <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+        <div class="mobile-nav-links" id="mobile-nav-links">
+            <a href="index.html">Главная</a>
+            <a href="about.html">О нас</a>
+            <a href="contacts.html">Контакты</a>
+            <hr>
+            <a href="https://t.me/osint_toolkit" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://www.rustore.ru/catalog/app/com.toolkitteam.osinttoolkit" target="_blank"><i class="fab fa-android"></i> RuStore</a>
+        </div>
+    </nav>
+
+    <main class="site-main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Toolkit Team</h1>
+                <p>Профессиональные OSINT‑инструменты с открытым кодом и AI‑ассистентом</p>
+                <div class="hero-buttons">
+                    <a href="https://www.rustore.ru/catalog/app/com.toolkitteam.osinttoolkit" target="_blank" class="btn btn-primary"><i class="fab fa-android"></i> Скачать в RuStore</a>
+                    <a href="https://t.me/osint_toolkit" target="_blank" class="btn btn-outline"><i class="fab fa-telegram"></i> Telegram канал</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number">10+</span><span class="stat-label">инструментов</span></div>
+                <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">AI поддержка</span></div>
+            </div>
+        </section>
+
+        <section class="screenshots">
+            <h2>Функции приложения</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-card"><div class="screenshot-placeholder"><i class="fas fa-globe"></i></div><h3>Анализ IP</h3><p>Геолокация, провайдер, определение VPN/прокси</p></div>
+                <div class="screenshot-card"><div class="screenshot-placeholder"><i class="fas fa-robot"></i></div><h3>OSINT-тян AI чат</h3><p>Интеллектуальный помощник для анализа данных</p></div>
+                <div class="screenshot-card"><div class="screenshot-placeholder"><i class="fab fa-vk"></i></div><h3>Анализ VK профиля</h3><p>Информация о пользователе, друзьях, группах</p></div>
+                <div class="screenshot-card"><div class="screenshot-placeholder"><i class="fas fa-cogs"></i></div><h3>Конструктор инструментов</h3><p>Визуальное создание цепочек анализа без кода</p></div>
+                <div class="screenshot-card"><div class="screenshot-placeholder"><i class="fab fa-telegram"></i></div><h3>Telegram боты</h3><p>Управление собственными OSINT-ботами</p></div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>Наши проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card"><div class="card-icon"><i class="fas fa-shield-alt"></i></div><h3>OSINT Toolkit</h3><p>Приложение для анализа данных из открытых источников. Доступно на Android.</p><ul class="project-features"><li><i class="fas fa-check-circle"></i> Анализ IP, телефонов, email</li><li><i class="fas fa-check-circle"></i> Поиск по никнейму в соцсетях</li><li><i class="fas fa-check-circle"></i> Глубокий анализ VK профилей</li><li><i class="fas fa-check-circle"></i> AI-ассистент «OSINT-тян»</li></ul></div>
+                <div class="project-card"><div class="card-icon"><i class="fas fa-cube"></i></div><h3>Конструктор инструментов</h3><p>Визуальный редактор для создания собственных цепочек анализа. Более 30 типов блоков.</p></div>
+                <div class="project-card"><div class="card-icon"><i class="fas fa-robot"></i></div><h3>OSINT‑тян</h3><p>AI‑ассистент, который помогает анализировать данные, искать связи и отвечать на вопросы.</p></div>
+            </div>
+        </section>
+
+        <section class="telegram-bot-info">
+            <h2><i class="fab fa-telegram"></i> Telegram бот OSINT Toolkit</h2>
+            <p>Подключите официального Telegram-бота к вашему аккаунту и получайте быстрый доступ к основным функциям прямо в мессенджере.</p>
+            <p><strong>Доступные команды:</strong> /ip, /phone, /domain, /email, /username, /vk, /ai</p>
+            <p><strong>Лимит:</strong> <span class="limit-badge">10 запросов в сутки</span> на пользователя для защиты от злоупотреблений.</p>
+            <p>Бота можно подключить и настроить в приложении OSINT Toolkit в разделе «Telegram боты».</p>
+        </section>
+
+        <section class="features">
+            <h2>Ключевые возможности</h2>
+            <div class="features-list">
+                <div><i class="fas fa-globe"></i> Анализ IP (геолокация, провайдер, риски)</div>
+                <div><i class="fas fa-phone"></i> Детальный анализ телефонных номеров</div>
+                <div><i class="fas fa-envelope"></i> Проверка email (MX, SPF, утечки)</div>
+                <div><i class="fas fa-search"></i> Поиск по никнейму в 10+ соцсетях</div>
+                <div><i class="fab fa-vk"></i> Глубокий анализ VK профилей</div>
+                <div><i class="fas fa-image"></i> Извлечение метаданных и OCR изображений</div>
+                <div><i class="fas fa-cogs"></i> Конструктор автоматизаций (более 30 типов блоков)</div>
+                <div><i class="fab fa-telegram"></i> Встроенные Telegram‑боты и управление ими</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col"><h4>Toolkit Team</h4><p>Профессиональные OSINT‑решения с открытой архитектурой</p></div>
+            <div class="footer-col"><h4>Навигация</h4><a href="index.html">Главная</a><a href="about.html">О нас</a><a href="contacts.html">Контакты</a></div>
+            <div class="footer-col"><h4>Контакты</h4><a href="https://t.me/osint_toolkit" target="_blank"><i class="fab fa-telegram"></i> Telegram канал</a><a href="mailto:osinttoolkit1@gmail.com"><i class="fas fa-envelope"></i> osinttoolkit1@gmail.com</a></div>
+            <div class="footer-col"><h4>Скачать</h4><a href="https://www.rustore.ru/catalog/app/com.toolkitteam.osinttoolkit" target="_blank"><i class="fab fa-android"></i> RuStore</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Toolkit Team. Все права защищены.</div>
+    </footer>
+
+    <!-- Фоновые слои -->
+    <div class="uncanny-mountains"></div>
+    <div class="mist-layer"></div>
+    <div class="creepy-haze"></div>
+
+    <!-- Оверлей для мобильного меню -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Анимация приветствия -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <div class="welcome-logo">Toolkit Team</div>
+            <div class="welcome-message">Вас приветствует сообщество</div>
+            <div class="welcome-sub">инструменты для открытого поиска</div>
+        </div>
+    </div>
+
+    <script>
+        // Плавный переход между страницами
+        (function() {
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.hostname === window.location.hostname && !link.hasAttribute('target')) {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                            e.preventDefault();
+                            document.body.classList.add('fade-out');
+                            setTimeout(() => {
+                                window.location.href = href;
+                            }, 400);
+                        }
+                    });
+                }
+            });
+        })();
+
+        // Мобильное меню с анимацией
+        const toggleBtn = document.getElementById('mobile-menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav-links');
+        const overlayMenu = document.getElementById('mobileMenuOverlay');
+
+        if (toggleBtn && mobileNav && overlayMenu) {
+            const openMenu = () => {
+                mobileNav.classList.add('active');
+                overlayMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                mobileNav.classList.remove('active');
+                overlayMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (mobileNav.classList.contains('active')) closeMenu();
+                else openMenu();
+            });
+            overlayMenu.addEventListener('click', closeMenu);
+            mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) closeMenu();
+            });
+        }
+
+        // Тёмная тема
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            document.body.classList.remove('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Приветствие один раз на главной
+        (function() {
+            if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '') {
+                if (!localStorage.getItem('welcomeShown')) {
+                    const overlay = document.getElementById('welcomeOverlay');
+                    if (overlay) {
+                        setTimeout(() => overlay.classList.add('active'), 50);
+                        setTimeout(() => {
+                            overlay.classList.remove('active');
+                            setTimeout(() => overlay.remove(), 600);
+                        }, 2500);
+                        localStorage.setItem('welcomeShown', 'true');
+                    }
+                } else {
+                    const overlay = document.getElementById('welcomeOverlay');
+                    if (overlay) overlay.remove();
+                }
+            } else {
+                const overlay = document.getElementById('welcomeOverlay');
+                if (overlay) overlay.remove();
+            }
+        })();
+    </script>
+</body>
+</html>

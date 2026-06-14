@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Страница не найдена</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <div class="theme-toggle" id="theme-toggle" style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+    <div class="error-container">
+        <div>
+            <i class="fas fa-dizzy" style="font-size: 80px; color: var(--blue); opacity: 0.5;"></i>
+            <h1 style="font-size: 120px; margin: 20px 0;">404</h1>
+            <h2>Страница не найдена</h2>
+            <p>Возможно, вы ошиблись адресом или страница была удалена.</p>
+            <a href="index.html" class="btn btn-primary" style="margin-top: 24px;">Вернуться на главную</a>
+        </div>
+    </div>
+    <div class="uncanny-mountains"></div>
+    <div class="mist-layer"></div>
+    <div class="creepy-haze"></div>
+
+    <script>
+        (function() {
+            // Плавный переход для внутренних ссылок
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.hostname === window.location.hostname && !link.hasAttribute('target')) {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
+                            e.preventDefault();
+                            document.body.classList.add('fade-out');
+                            setTimeout(() => { window.location.href = href; }, 300);
+                        }
+                    });
+                }
+            });
+            // Тёмная тема
+            const themeToggle = document.getElementById('theme-toggle');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') { document.body.classList.add('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+            else { document.body.classList.remove('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+        })();
+    </script>
+</body>
+</html>
