@@ -1,4 +1,4 @@
-/* ===== Базовые переменные и сброс ===== */
+/* ===== БАЗОВЫЕ ПЕРЕМЕННЫЕ И СБРОС ===== */
 :root {
     --bg-dark: #0a0c12;
     --bg-card: rgba(18, 22, 35, 0.85);
@@ -6,12 +6,60 @@
     --text-primary: #f0f3fa;
     --text-secondary: #b0b8d0;
     --blue: #3b82f6;
+    --blue-rgb: 59, 130, 246;
     --blue-glow: rgba(59, 130, 246, 0.4);
     --border-light: rgba(255, 255, 255, 0.08);
     --transition: all 0.25s ease;
     --transition-smooth: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    --separator: rgba(255,255,255,0.08);
+    --bg-secondary: rgba(255,255,255,0.05);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+    --highlight: rgba(59,130,246,0.15);
 }
 
+/* ===== ГЛОБАЛЬНАЯ БЛОКИРОВКА СВАЙПА ВЛЕВО/ВПРАВО ===== */
+html, body {
+    overscroll-behavior-x: none !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+body {
+    overscroll-behavior-x: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Все контейнеры с прокруткой — скролл по вертикали работает */
+.main-container,
+.detail-content,
+.ai-chat-messages,
+.history-list,
+.builder-workspace,
+.commands-panel,
+.result-card,
+.vk-friends-grid,
+.vk-groups-grid,
+.deep-analysis-content,
+.blocks-scroll,
+.palette-panel,
+.quick-search-suggestions,
+.wiki-content,
+.tools-grid,
+.bots-container,
+.hub-tools-grid {
+    overscroll-behavior-x: contain !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== ОСТАЛЬНЫЕ СТИЛИ (БЕЗ ИЗМЕНЕНИЙ) ===== */
 * {
     margin: 0;
     padding: 0;
@@ -854,5 +902,240 @@ body:not(.dark-theme) .footer-col h4 {
     }
     .features-list {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ===== КНОПКА ТЕМЫ НА МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+    .nav-buttons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+    .nav-buttons .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30px;
+        background: var(--bg-secondary);
+        border: 0.5px solid var(--separator);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+    .nav-buttons .theme-toggle:active {
+        transform: scale(0.9);
+        background: var(--highlight);
+    }
+    .mobile-menu-toggle {
+        margin-left: 4px;
+    }
+    /* Убедимся, что навигационные ссылки не занимают лишнее место */
+    .nav-links {
+        display: none;
+    }
+    .nav-container .logo {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    /* На мобильных убираем лишние отступы */
+    .nav-container {
+        padding: 0 12px;
+    }
+}
+
+/* ===== СТИЛИ ДЛЯ FAQ НА СТРАНИЦЕ КОНТАКТОВ ===== */
+.faq-preview {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.faq-preview h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.faq-preview h3 i {
+    color: var(--blue);
+    font-size: 28px;
+}
+
+/* Карточка вопроса */
+.faq-preview details {
+    background: var(--bg-card);
+    border: 0.5px solid var(--separator);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(8px);
+}
+
+.faq-preview details:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 16px rgba(var(--blue-rgb), 0.12);
+}
+
+.faq-preview details[open] {
+    border-color: var(--blue);
+    box-shadow: 0 4px 24px rgba(var(--blue-rgb), 0.15);
+    background: var(--bg-card);
+}
+
+/* Заголовок вопроса (summary) */
+.faq-preview summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: background 0.2s ease;
+    user-select: none;
+    position: relative;
+}
+
+.faq-preview summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Иконка вопроса */
+.faq-preview summary .faq-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: rgba(var(--blue-rgb), 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.faq-preview summary .faq-icon i {
+    font-size: 14px;
+    color: var(--blue);
+    transition: transform 0.3s ease;
+}
+
+.faq-preview details[open] summary .faq-icon i {
+    transform: rotate(180deg);
+}
+
+/* Стрелка-индикатор справа */
+.faq-preview summary::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-left: auto;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.faq-preview details[open] summary::after {
+    transform: rotate(180deg);
+    color: var(--blue);
+    opacity: 1;
+}
+
+/* Текст ответа */
+.faq-preview details > div,
+.faq-preview details > p,
+.faq-preview details > :not(summary) {
+    padding: 0 20px 20px 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    animation: faqSlideDown 0.3s ease-out;
+}
+
+@keyframes faqSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== СВЕТЛАЯ ТЕМА ===== */
+body:not(.dark-theme) .faq-preview details {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-theme) .faq-preview details:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+}
+
+body:not(.dark-theme) .faq-preview details[open] {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--blue);
+}
+
+body:not(.dark-theme) .faq-preview summary {
+    color: #0f172a;
+}
+
+body:not(.dark-theme) .faq-preview summary .faq-icon {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+body:not(.dark-theme) .faq-preview details > p,
+body:not(.dark-theme) .faq-preview details > div {
+    color: #334155;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 600px) {
+    .faq-preview h3 {
+        font-size: 20px;
+    }
+    .faq-preview summary {
+        font-size: 14px;
+        padding: 14px 16px;
+        gap: 12px;
+    }
+    .faq-preview summary .faq-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .faq-preview summary .faq-icon i {
+        font-size: 12px;
+    }
+    .faq-preview details > p {
+        font-size: 13px;
+        padding: 0 16px 16px 16px;
+    }
+    .faq-preview summary::after {
+        font-size: 10px;
     }
 }
