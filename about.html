@@ -14,6 +14,7 @@
             <a href="index.html" class="logo">Toolkit Team</a>
             <div class="nav-links">
                 <a href="index.html">Главная</a>
+                <a href="app.html">Веб-приложение</a>
                 <a href="about.html" class="active">О нас</a>
                 <a href="contacts.html">Контакты</a>
             </div>
@@ -26,6 +27,7 @@
         </div>
         <div class="mobile-nav-links" id="mobile-nav-links">
             <a href="index.html">Главная</a>
+            <a href="app.html">Веб-приложение</a>
             <a href="about.html">О нас</a>
             <a href="contacts.html">Контакты</a>
             <hr>
@@ -83,7 +85,6 @@
     <div class="creepy-haze"></div>
 
     <script>
-        // Блокировка F12 и других клавиш разработчика
         (function() {
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'F12' || e.keyCode === 123) {
@@ -113,7 +114,6 @@
             });
         })();
 
-        // Плавный переход
         (function() {
             const links = document.querySelectorAll('a');
             links.forEach(link => {
@@ -130,7 +130,6 @@
             });
         })();
 
-        // Мобильное меню
         const toggleBtn = document.getElementById('mobile-menu-toggle');
         const mobileNav = document.getElementById('mobile-nav-links');
         const overlay = document.getElementById('mobileMenuOverlay');
@@ -157,7 +156,6 @@
             });
         }
 
-        // Тёмная тема
         const themeToggle = document.getElementById('theme-toggle');
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') { document.body.classList.add('dark-theme'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
@@ -168,6 +166,55 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
+
+        // ===== БЛОКИРОВКА СВАЙПА ВЛЕВО/ВПРАВО (вертикальный скролл работает) =====
+(function() {
+    // Запрещаем навигационные жесты через history
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function(e) {
+        if (e.state === null) {
+            history.pushState(null, null, location.href);
+        }
+    });
+
+    // Блокируем горизонтальный свайп
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(e) {
+        const deltaX = e.touches[0].clientX - touchStartX;
+        const deltaY = e.touches[0].clientY - touchStartY;
+
+        // Если свайп горизонтальный (влево/вправо) — блокируем
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 1.2 && Math.abs(deltaX) > 30) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    // Блокируем клавишу Back на Android
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Back' || e.key === 'Backspace') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Разрешаем горизонтальный скролл только внутри вкладок и чипсов
+    document.querySelectorAll('.app-tabs, .ai-command-chips, .palette-tabs, .hub-categories').forEach(function(el) {
+        if (el) {
+            el.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, { passive: true });
+        }
+    });
+
+    console.log('✅ Блокировка горизонтального свайпа активирована (вертикальный скролл работает)');
+})();
     </script>
 </body>
 </html>
